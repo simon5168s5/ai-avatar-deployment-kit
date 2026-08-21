@@ -1,0 +1,15 @@
+name: 驗證學員 AI 分身
+
+on:
+  pull_request:
+  push:
+    branches: [dev]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    uses: simon5168s5/ai-avatar-deployment-kit/.github/workflows/reusable-verify.yml@d7cc155ae472df3fdd3cd73f6095d2edf04183ef
+    with:
+      voice-agent-directory: apps/voice-agent

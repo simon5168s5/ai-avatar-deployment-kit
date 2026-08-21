@@ -4,4 +4,60 @@
 
 這個 Repository 只保存部署設定，不保存任何學生的 Web、Core API、Voice Agent 程式碼，也不保存 API Key、密碼或 Token。
 
-目前版本仍在建立中，完成驗證後才會發布 `v1.0.0` 給學員使用。
+## 老師維護方式
+
+老師在這個 Repository 維護 Reusable Workflows，並以不可變的 Commit SHA 讓學生專案呼叫。更新共用流程時發布新版本，不移動既有版本的 Tag。
+
+## 學生安裝方式
+
+學生保留自己的程式碼，另外 Clone 本 Kit 到相鄰資料夾，再執行安裝器：
+
+```bash
+git clone --depth 1 --branch v1.0.0 https://github.com/simon5168s5/ai-avatar-deployment-kit.git
+./ai-avatar-deployment-kit/install.sh /學生專案的完整路徑
+```
+
+安裝器只加入以下檔案：
+
+- `.github/workflows/verify.yml`
+- `.github/workflows/initialize-livekit.yml`
+- `.github/workflows/deploy-livekit.yml`
+- `render.yaml`
+- `apps/voice-agent/Dockerfile`
+- `apps/voice-agent/.dockerignore`
+
+若任一檔案已存在且內容不同，安裝器會在寫入前停止，不覆蓋任何學生檔案。學生自己的 `supabase/migrations` 不會被 Kit 修改。
+
+## 學生專案部署契約
+
+目前 `v1.0.0` 適用於以下結構：
+
+```text
+apps/web
+apps/api
+apps/voice-agent
+supabase/config.toml
+supabase/migrations/*.sql
+package.json
+pnpm-lock.yaml
+```
+
+根目錄必須提供 `pnpm verify`，Voice Agent 必須提供 `requirements.lock`、`pyproject.toml` 與 `tests/`。
+
+## 第一次平台設定
+
+1. Supabase 建立 Free Project，連接學生自己的 GitHub Repository。
+2. LiveKit Cloud 建立 Project，將學生自己的憑證加入 GitHub Repository Secrets。
+3. Render 以學生 Repository 根目錄的 `render.yaml` 建立 Blueprint。
+4. 在 GitHub 設定 `DEPLOYMENT_ENABLED=true` 前，LiveKit 正式部署會安全略過。
+5. 手動執行「初始化 LiveKit Production Agent」一次，合併它產生的 `livekit.toml` Pull Request。
+6. 完成 Web、Core、Supabase 與 LiveKit 驗收後，才啟用正式部署。
+
+## GitHub Repository Secrets
+
+- `LIVEKIT_URL`
+- `LIVEKIT_API_KEY`
+- `LIVEKIT_API_SECRET`
+- `LIVEKIT_AGENT_SECRET_LIST`
+
+只保存名稱，不得將任何實際值提交到 GitHub。
