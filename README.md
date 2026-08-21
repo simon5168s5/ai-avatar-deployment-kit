@@ -13,7 +13,7 @@
 學生保留自己的程式碼，另外 Clone 本 Kit 到相鄰資料夾，再執行安裝器：
 
 ```bash
-git clone --depth 1 --branch v1.0.2 https://github.com/simon5168s5/ai-avatar-deployment-kit.git
+git clone --depth 1 --branch v1.0.3 https://github.com/simon5168s5/ai-avatar-deployment-kit.git
 ./ai-avatar-deployment-kit/install.sh /學生專案的完整路徑
 ```
 
@@ -30,7 +30,7 @@ git clone --depth 1 --branch v1.0.2 https://github.com/simon5168s5/ai-avatar-dep
 
 ## 學生專案部署契約
 
-目前 `v1.0.2` 適用於以下結構：
+目前 `v1.0.3` 適用於以下結構：
 
 ```text
 apps/web
@@ -43,6 +43,14 @@ pnpm-lock.yaml
 ```
 
 根目錄必須提供 `pnpm verify`，Voice Agent 必須提供 `requirements.lock`、`pyproject.toml` 與 `tests/`。
+
+學生 Render Blueprint 預設使用以下語音流量保護值：
+
+- `VOICE_GLOBAL_CONCURRENCY_LIMIT=5`：整個專案最多同時五通正式語音。
+- `VOICE_SETUP_RATE_LIMIT=5`：整個專案每分鐘最多建立五個語音房間。
+- `VOICE_PREVIEW_RATE_LIMIT=5`：同一使用者的聲音試聽請求限制為五次。
+
+這些值不是 LiveKit 免費方案本身的額度，而是 Core API 的應用層保護設定；學生若要調整，必須同步檢查自己的 Core API 與 Supabase Migration。
 
 ## 第一次平台設定
 

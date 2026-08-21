@@ -70,6 +70,9 @@ test("Render Blueprint keeps secrets out of source and waits for CI checks", asy
   assert.match(blueprint, /SUPABASE_SECRET_KEY\n\s+sync: false/);
   assert.match(blueprint, /LIVEKIT_API_SECRET\n\s+sync: false/);
   assert.match(blueprint, /VOICE_INTERNAL_TOKEN\n\s+sync: false/);
+  assert.match(blueprint, /VOICE_GLOBAL_CONCURRENCY_LIMIT\n\s+value: "5"/);
+  assert.match(blueprint, /VOICE_SETUP_RATE_LIMIT\n\s+value: "5"/);
+  assert.match(blueprint, /VOICE_PREVIEW_RATE_LIMIT\n\s+value: "5"/);
   assert.doesNotMatch(blueprint, /sb_secret_|sk-[A-Za-z0-9]/);
 });
 
