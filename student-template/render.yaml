@@ -32,7 +32,7 @@ services:
       - key: LIVEKIT_AGENT_NAME
         value: flying-eagle-voice-agent
       - key: VOICE_INTERNAL_TOKEN
-        generateValue: true
+        sync: false
       - key: VOICE_PREVIEW_RATE_LIMIT
         value: "5"
       - key: MINIMAX_API_KEY

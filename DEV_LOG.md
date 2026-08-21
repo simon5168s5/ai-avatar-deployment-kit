@@ -19,6 +19,7 @@
 - 建立 Deployment Kit 核心 Reusable Workflows。
 - 修正 GitHub Runner 將 YAML 驗證指令內 `#` 誤判為註解而截斷的問題。
 - `main` 更新時也會執行驗證，讓 Render 的 `checksPass` Auto-Deploy 有真實 CI 結果可等待。
+- `VOICE_INTERNAL_TOKEN` 改由學生產生一次並同時填入 Render 與 LiveKit Secret List，避免兩端取得不同值。
 
 **尚未解決：**
 - 學員安裝包、Render Blueprint、測試與正式 `v1.0.0` Tag 尚未完成。
