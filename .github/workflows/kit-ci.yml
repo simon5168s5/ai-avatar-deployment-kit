@@ -20,5 +20,5 @@ jobs:
           node-version: 24
       - run: npm test
       - name: 驗證 Workflow 與 Blueprint YAML
-        run: ruby -e 'require "yaml"; Dir[".github/workflows/*.yml", "student-template/.github/workflows/*.yml", "student-template/render.yaml"].flatten.each { |file| YAML.load_file(file); puts "OK #{file}" }'
+        run: ruby -e 'require "yaml"; Dir[".github/workflows/*.yml", "student-template/.github/workflows/*.yml", "student-template/render.yaml"].flatten.each { |file| YAML.load_file(file); puts "OK " + file }'
       - run: git diff --check

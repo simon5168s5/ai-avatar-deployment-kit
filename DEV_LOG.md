@@ -17,6 +17,7 @@
 
 **已解決：**
 - 建立 Deployment Kit 核心 Reusable Workflows。
+- 修正 GitHub Runner 將 YAML 驗證指令內 `#` 誤判為註解而截斷的問題。
 
 **尚未解決：**
 - 學員安裝包、Render Blueprint、測試與正式 `v1.0.0` Tag 尚未完成。
