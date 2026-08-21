@@ -13,7 +13,7 @@
 學生保留自己的程式碼，另外 Clone 本 Kit 到相鄰資料夾，再執行安裝器：
 
 ```bash
-git clone --depth 1 --branch v1.0.0 https://github.com/simon5168s5/ai-avatar-deployment-kit.git
+git clone --depth 1 --branch v1.0.1 https://github.com/simon5168s5/ai-avatar-deployment-kit.git
 ./ai-avatar-deployment-kit/install.sh /學生專案的完整路徑
 ```
 
@@ -30,7 +30,7 @@ git clone --depth 1 --branch v1.0.0 https://github.com/simon5168s5/ai-avatar-dep
 
 ## 學生專案部署契約
 
-目前 `v1.0.0` 適用於以下結構：
+目前 `v1.0.1` 適用於以下結構：
 
 ```text
 apps/web

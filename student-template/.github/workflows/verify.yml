@@ -3,7 +3,7 @@ name: 驗證學員 AI 分身
 on:
   pull_request:
   push:
-    branches: [dev]
+    branches: [dev, main]
 
 permissions:
   contents: read

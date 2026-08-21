@@ -41,6 +41,7 @@ test("student workflows call an immutable Deployment Kit commit", async () => {
     assert.match(workflow, new RegExp(`ai-avatar-deployment-kit/.github/workflows/.+@${workflowSha}`));
     assert.doesNotMatch(workflow, /@(?:main|master|v1)\b/);
   }
+  assert.match(workflows[0], /branches: \[dev, main\]/);
   assert.match(workflows[2], /DEPLOYMENT_ENABLED == 'true'/);
 });
 
